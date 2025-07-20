@@ -1,0 +1,211 @@
+services:
+  store:
+    image: postgres:13.7-alpine
+    restart: always
+    user: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=foodsmart
+    networks:
+      common:
+    ports:
+      - '5432:5432'
+    volumes: 
+      - ./initdb:/docker-entrypoint-initdb.d
+      - store-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+
+  generate-zapatos-schema:
+    build:
+      context: ../../
+      args:
+        NODE_ENV: devenv
+      dockerfile: ./common/Dockerfile.zapatos
+    volumes:
+      - ../../common/src:/app/common/src
+      - ../../common/locales:/app/common/locales
+      - ../../common/zapatos:/app/common/zapatos
+      - ~/.aws/:/home/app/.aws:ro
+      - ~/.aws/:/home/node/.aws:ro
+    environment:
+      - NODE_ENV=devenv
+      - AWS_PROFILE=${AWS_PROFILE}
+    networks:
+      common:
+    depends_on:
+      store:
+        condition: service_healthy
+    command: npm run generate:schema
+    profiles:
+      - donotstart
+
+  run-migrations-common:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/common:/db
+    depends_on:
+      store:
+        condition: service_healthy
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.common_migrations", "up" ]
+
+  run-migrations-telenutrition:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/telenutrition:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-common:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.telenutrition_migrations", "up" ]
+
+  run-migrations-deident-telenutrition:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/deident_telenutrition:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-common:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.deident_telenutrition_migrations", "up" ]
+
+  run-migrations-foodcards:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/foodcards:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-telenutrition:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.foodcards_migrations", "up" ]
+
+  run-migrations-marketing:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/marketing:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-foodcards:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.marketing_migrations", "up" ]
+
+  run-migrations-callcenter:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/callcenter:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-marketing:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.callcenter_migrations", "up" ]
+
+
+  run-migrations-program:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/program:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-telenutrition:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.common_migrations", "up" ]
+
+  run-migrations-dnc:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/dnc:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-callcenter:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.dnc_migrations", "up" ]
+
+  run-migrations-eligibility:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/eligibility:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-dnc:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.eligibility_migrations", "up" ]
+
+  run-migrations-deident:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/deident:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-dnc:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.deident_migrations", "up" ]
+
+  run-migrations-deident-common:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/deident_common:/db
+    depends_on:
+      store:
+        condition: service_healthy
+      run-migrations-dnc:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "--migrations-table", "dbmate.deident_common_migrations", "up" ]
+
+volumes:
+  store-data:
+networks:
+  common:
