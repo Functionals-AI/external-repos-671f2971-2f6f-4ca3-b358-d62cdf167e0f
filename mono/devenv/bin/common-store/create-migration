@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+  echo "usage: create-migrate <domain> <migration-name>"
+  echo ""
+  echo "example: create-migrate telenutrition create_users_table"
+else
+  docker run --rm -it --network=host -v "$(pwd)/../common-store/migrations/$1/schema:/db/migrations" amacneil/dbmate new $2
+fi
