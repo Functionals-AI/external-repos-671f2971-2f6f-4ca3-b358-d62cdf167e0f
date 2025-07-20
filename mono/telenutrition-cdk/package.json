@@ -1,0 +1,58 @@
+{
+  "name": "@mono/telenutrition-cdk",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "homepage": "https://github.com/zipongo/telenutrition#readme",
+  "license": "ISC",
+  "private": true,
+  "main": "lib/index",
+  "types": "lib/index",
+  "bin": {
+    "telenutrition": "bin/telenutrition.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/telenutrition.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "test": "jest --passWithNoTests"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/lodash": "catalog:",
+    "@types/node": "catalog:",
+    "aws-cdk": "catalog:",
+    "jest": "catalog:",
+    "ts-node": "catalog:"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-kinesisfirehose-alpha": "catalog:",
+    "@mono/common": "workspace:*",
+    "@mono/common-cdk": "workspace:*",
+    "@mono/telenutrition": "workspace:*",
+    "@mono/telenutrition-e2e": "workspace:*",
+    "@mono/telenutrition-flows": "workspace:*",
+    "aws-cdk-lib": "catalog:",
+    "constructs": "catalog:",
+    "lodash": "catalog:",
+    "neverthrow": "catalog:",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
