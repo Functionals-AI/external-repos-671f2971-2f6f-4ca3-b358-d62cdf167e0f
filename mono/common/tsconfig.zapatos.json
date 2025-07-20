@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "esModuleInterop": true,
+    "outDir": "./lib",
+    "rootDir": "src"
+  },
+  "include": [
+    "src/config/*",
+    "src/error/*",
+    "src/locale.ts",
+    "src/logger.ts",
+    "src/context.ts"
+  ],
+  "typeRoots": ["./src/types"]
+}
