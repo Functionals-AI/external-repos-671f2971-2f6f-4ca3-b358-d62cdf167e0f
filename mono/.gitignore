@@ -1,0 +1,15 @@
+cdk.out/
+cdk.context.json
+node_modules/
+lib/
+lerna-debug.log
+npm-debug.log
+mono.code-workspace
+.idea
+.DS_Store
+tsconfig.tsbuildinfo
+.env
+.turbo
+.vscode/settings.json
+.nova
+localignore-*
