@@ -1,0 +1,52 @@
+{
+  "name": "@mono/telenutrition-flows",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "flow-task": "node ./lib/runner.js",
+    "test": "jest --passWithNoTests",
+    "lint": "eslint . --max-warnings=18"
+  },
+  "dependencies": {
+    "@mono/analytics": "workspace:*",
+    "@mono/common": "workspace:*",
+    "@mono/common-flows": "workspace:*",
+    "@mono/marketing": "workspace:*",
+    "@mono/telenutrition": "workspace:*",
+    "dayjs": "catalog:",
+    "luxon": "catalog:",
+    "neverthrow": "catalog:",
+    "typescript": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@mono/eslint-config": "workspace:*",
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/luxon": "catalog:",
+    "jest": "catalog:",
+    "eslint": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
