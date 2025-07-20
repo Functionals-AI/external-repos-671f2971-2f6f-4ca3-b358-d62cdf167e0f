@@ -1,0 +1,12 @@
+# Each line is a file pattern followed by one or more owners.
+
+pnpm-workspace.yaml @zipongo/security
+*-cdk/ @zipongo/ops
+package.json @zipongo/security
+.github/ @zipongo/ops
+dependabot.yml @zipongo/security
+.prettierrc* @avd-fs @hracer
+eslint-config/ @avd-fs @hracer
+eslint.config.* @avd-fs @hracer
+tsconfig* @avd-fs @hracer
+turbo.json @avd-fs @hracer
