@@ -1,0 +1,29 @@
+{
+  "do_not_skip": true,
+  "results": [
+    {
+      "remoteFileObject": {
+        "type": "-",
+        "name": "Foodsmart_Data_03132025.hl7.pgp",
+        "size": 1042713,
+        "modifyTime": 1729606156000,
+        "accessTime": 0,
+        "rights": {
+          "user": "rw",
+          "group": "rw",
+          "other": "rw"
+        },
+        "longname": "-rw-rw-rw-   1 OWNER@   GROUP@    1042713 Oct 22 10:09 HSCSN_FoodSmart_Eligibility_20241022.csv"
+      },
+      "destKey": "aah/sftp/Foodsmart_Data_03132025.hl7.pgp"
+    }
+  ],
+  "detail": {
+    "bucket": {
+      "name": "foodsmart-development-sftp-archive-us-west-2"
+    },
+    "object": {
+      "key": "advancedhealth/inbound/test-members-20250409.QOQfk0M2.csv"
+    }
+  }
+}
