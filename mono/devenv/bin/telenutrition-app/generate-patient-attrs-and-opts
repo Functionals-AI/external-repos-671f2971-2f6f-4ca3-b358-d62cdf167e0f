@@ -1,0 +1,3 @@
+#!/bin/bash
+echo -e "\Generating patient attribute and option types\n"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml exec telenutrition-api pnpm dlx ts-node ../telenutrition/src/scripts/generate-patient-attrs-and-opts.ts
