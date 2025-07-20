@@ -1,0 +1,119 @@
+name: pull-request-web
+
+on:
+  pull_request:
+    branches: [ master ]
+    paths:
+      - telenutrition-web/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        run: npm install -g pnpm@10.4.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 22
+      - name: Run install
+        run: pnpm --filter=@mono/telenutrition-web... install --frozen-lockfile
+      - name: Compile dependencies
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: pnpm --filter=@mono/telenutrition-web... tsc:build
+      - name: Run build
+        run: NODE_OPTIONS="--max-old-space-size=4096" pnpm --filter telenutrition-web run build
+        env:
+          TZ: America/New_York
+          NEXT_PUBLIC_API_BASE_URL: http://foodsmart-devenv:3000/telenutrition/api/v1
+      - name: Save build folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          include-hidden-files: true
+          if-no-files-found: error
+          path: telenutrition-web/.next
+  cypress-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download the build folder
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: telenutrition-web/.next
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 22
+      - name: Run install
+        run: pnpm --filter=@mono/telenutrition-web... install --frozen-lockfile
+      - name: Cypress run e2e
+        uses: cypress-io/github-action@v6
+        with:
+          install: false
+          start: pnpm run start
+          working-directory: telenutrition-web
+          browser: chrome
+          wait-on: "http://localhost:3000"
+          config-file: cypress.config-ci.ts
+        env:
+          TZ: America/New_York
+          NEXT_PUBLIC_API_BASE_URL: http://foodsmart-devenv:3000/telenutrition/api/v1
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots
+          path: telenutrition-web/cypress/screenshots
+
+  cypress-component-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download the build folder
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: telenutrition-web/.next
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 22
+      - name: Run install
+        run: pnpm --filter=@mono/telenutrition-web... install --frozen-lockfile
+      - name: Cypress run Component
+        uses: cypress-io/github-action@v6
+        with:
+          install: false
+          start: pnpm run start
+          working-directory: telenutrition-web
+          browser: chrome
+          wait-on: "http://localhost:3000"
+          config-file: cypress.config-ci.ts
+          component: true
+        env:
+          TZ: America/New_York
+          NEXT_PUBLIC_API_BASE_URL: http://foodsmart-devenv:3000/telenutrition/api/v1
