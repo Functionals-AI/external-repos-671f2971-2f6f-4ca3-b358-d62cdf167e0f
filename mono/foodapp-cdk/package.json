@@ -1,0 +1,54 @@
+{
+  "name": "@mono/foodapp-cdk",
+  "version": "0.0.0",
+  "description": "TODO: description",
+  "author": "marek.zipongo <marek.ryniejski@zipongo.com>",
+  "homepage": "https://github.com/zipongo/mono/node/packages/foodapp-cdk#readme",
+  "license": "ISC",
+  "private": true,
+  "main": "lib/index",
+  "types": "lib/index",
+  "bin": {
+    "foodapp": "bin/foodapp.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "test": "jest --passWithNoTests"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/node": "catalog:",
+    "aws-cdk": "catalog:",
+    "jest": "catalog:",
+    "ts-node": "catalog:"
+  },
+  "dependencies": {
+    "@mono/common": "workspace:*",
+    "@mono/common-cdk": "workspace:*",
+    "@mono/foodapp": "workspace:*",
+    "@mono/foodapp-flows": "workspace:*",
+    "aws-cdk-lib": "catalog:",
+    "constructs": "catalog:",
+    "neverthrow": "catalog:",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
