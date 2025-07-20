@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./lib"
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "src/scripts/*"
+  ]
+}
