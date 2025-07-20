@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./lib"
+  },
+  "include": [ "src/**/*" ],
+  "exclude": [
+    "src/scripts/*",
+    "src/task-runner.ts"
+  ]
+}
