@@ -1,0 +1,43 @@
+services:
+  backend:
+    image: tryretool/backend:3.24.6
+    env_file: 
+      - ./docker.env
+      - ./.env
+    environment:
+      - SERVICE_TYPE=MAIN_BACKEND,DB_CONNECTOR
+    networks:
+      retool-net:
+      common:
+    ports:
+      - '3500:3000'
+    command: ./docker_scripts/start_api.sh
+
+  jobs-runner:
+    image: tryretool/backend:3.24.6
+    env_file: 
+      - ./docker.env
+      - ./.env
+    environment:
+      - SERVICE_TYPE=JOBS_RUNNER
+    networks:
+      retool-net:
+    command: ./docker_scripts/start_api.sh
+
+  db:
+    image: postgres:13.7-alpine
+    env_file: 
+      - ./docker.env
+      - ./.env
+    networks:
+      retool-net:
+    volumes: 
+      - retool-data:/var/lib/postgresql/data
+
+volumes:
+  retool-data:
+networks:
+  retool-net:
+  common:
+    name: common_common
+    external: true
