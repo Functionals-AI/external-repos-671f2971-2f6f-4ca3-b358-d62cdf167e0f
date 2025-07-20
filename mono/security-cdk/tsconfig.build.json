@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "strictNullChecks": false,
+    "outDir": "lib",
+  },
+  "include": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "src/**/*"
+  ]
+}
