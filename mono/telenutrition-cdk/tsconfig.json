@@ -1,0 +1,11 @@
+{
+ "extends": "../tsconfig.json",
+ "compilerOptions": {
+  "outDir": "lib",
+  "strictNullChecks": false
+},
+"typeRoots": ["./src/types"],
+ "include": [
+   "src/**/*"
+ ]
+}
