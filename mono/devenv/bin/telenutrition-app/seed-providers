@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -e "\nSeeding departments and providers data from capture\n"
+
+docker compose -f ./common/docker-compose.yml cp ./telenutrition-app/sql/providers-seed.sql store:/tmp/providers-seed.sql
+
+POSTGRES_USER=$(docker compose -f ./common/docker-compose.yml exec -T store sh -c 'echo $POSTGRES_USER')
+POSTGRES_DB=$(docker compose -f ./common/docker-compose.yml exec -T store sh -c 'echo $POSTGRES_DB')
+
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml exec store psql -U $POSTGRES_USER -d $POSTGRES_DB -f /tmp/providers-seed.sql
