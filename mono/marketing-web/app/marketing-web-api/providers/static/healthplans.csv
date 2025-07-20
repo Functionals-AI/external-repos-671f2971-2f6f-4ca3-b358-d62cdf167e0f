@@ -1,0 +1,17 @@
+Health Plan,Proper Name,State ,Visible for States,S3 Image URL
+Aetna ,Aetna,"IL, MA, MI, MN, MO, NY",IL,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/aetna.webp
+BUCF,Banner University Family Care,AZ,AZ,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/bufc.png
+BCBS IL ,Blue Cross Blue Shield of Illinois,IL,IL,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/bluecross-illinois.webp
+BCBS MA ,Blue Cross Blue Shield of Massachusetts,MA,MA,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/bluecross-mass.png
+BCBS TX,Blue Cross Blue Shield of Texas,TX,TX,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/bluecross-texas.webp
+CDPHP ,CDPHP,NY,NY,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/cdphp.webp
+CCHP,Chorus Community Health Plans,WI,WI,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/chorus-chp.webp
+Cigna ,Cigna,National ,*,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/cigna.png
+CountyCare,CountyCare,IL,IL,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/countycare.png
+HealthFirst ,HealthFirst,NY,NY,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/healthfirst.webp
+Independent Health ,Independent Health,NY,NY,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/independent-health.webp
+Martin's Point,Martin's Point,"NH, ME","NH, ME",https://d1hm90tax3m3th.cloudfront.net/web/health-plans/martinspoint.png
+Quartz,Quartz,"WI, IL, MI","WI, IL, MI",https://d1hm90tax3m3th.cloudfront.net/web/health-plans/quartz.png
+Umpqua ,Umpqua,OR,OR,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/umpqua-health.webp
+Molina,Molina Healthcare,TX,TX,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/molina.webp
+Pacific Source,Pacific Source,OR,OR,https://d1hm90tax3m3th.cloudfront.net/web/health-plans/pacific-source.webp
