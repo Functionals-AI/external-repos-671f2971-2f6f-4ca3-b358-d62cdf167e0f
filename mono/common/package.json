@@ -1,0 +1,89 @@
+{
+  "name": "@mono/common",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "license": "ISC",
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "test": "jest --passWithNoTests",
+    "watch": "tsc -w",
+    "generate:schema": "ts-node ./src/scripts/generate-zapatos-schema.ts",
+    "i18n:extract": "ts-node ./src/scripts/extract-i18n-strings.ts",
+    "i18n:upload": "NODE_ENV=devenv ts-node ./src/scripts/upload-i18n-strings.ts",
+    "i18n:download": "NODE_ENV=devenv ts-node ./src/scripts/download-i18n-strings.ts",
+    "playwright-install": "playwright install --with-deps chromium"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudformation": "catalog:",
+    "@aws-sdk/client-cloudwatch-logs": "catalog:",
+    "@aws-sdk/client-dynamodb": "catalog:",
+    "@aws-sdk/client-ecs": "catalog:",
+    "@aws-sdk/client-eventbridge": "catalog:",
+    "@aws-sdk/client-firehose": "catalog:",
+    "@aws-sdk/client-kinesis": "catalog:",
+    "@aws-sdk/client-kms": "catalog:",
+    "@aws-sdk/client-s3": "catalog:",
+    "@aws-sdk/client-secrets-manager": "catalog:",
+    "@aws-sdk/client-sfn": "catalog:",
+    "@aws-sdk/client-sns": "catalog:",
+    "@aws-sdk/lib-storage": "catalog:",
+    "@slack/web-api": "catalog:",
+    "@types/http-link-header": "^1.0.7",
+    "@types/i18n": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/pg": "catalog:",
+    "adm-zip": "catalog:",
+    "aws-cdk-lib": "catalog:",
+    "aws-sdk": "catalog:",
+    "axios": "catalog:",
+    "csv": "catalog:",
+    "csv-stringify": "catalog:",
+    "date-fns": "catalog:",
+    "decimal.js": "catalog:",
+    "fast-levenshtein": "catalog:",
+    "googleapis": "catalog:",
+    "http-link-header": "^1.1.3",
+    "i18n": "catalog:",
+    "jest": "catalog:",
+    "lodash": "catalog:",
+    "luxon": "catalog:",
+    "mysql2": "catalog:",
+    "neverthrow": "catalog:",
+    "pg": "catalog:",
+    "pg-cursor": "catalog:",
+    "phone": "catalog:",
+    "playwright": "catalog:",
+    "ssh2-sftp-client": "catalog:",
+    "ts-morph": "catalog:",
+    "twilio": "catalog:",
+    "typescript": "catalog:",
+    "uuid": "catalog:",
+    "yargs": "catalog:",
+    "zapatos": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/luxon": "catalog:",
+    "@types/node": "catalog:",
+    "ts-node": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
