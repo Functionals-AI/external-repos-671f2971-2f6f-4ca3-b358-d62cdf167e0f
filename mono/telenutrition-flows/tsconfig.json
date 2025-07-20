@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./lib"
+  },
+  "include": [ "src/**/*" ],
+  "exclude": [
+    "src/scripts/*"
+  ],
+  "files": [],
+  "references": [
+    {"path": "../common"},
+    {"path": "../common-flows"},
+    {"path": "../marketing"},
+    {"path": "../telenutrition"}
+  ]
+}
