@@ -1,0 +1,8 @@
+**/.git
+**/.*ignore
+**/.vscode
+**/node_modules
+**/lib
+**/Dockerfile
+**/tsconfig.tsbuildinfo
+**/.turbo
