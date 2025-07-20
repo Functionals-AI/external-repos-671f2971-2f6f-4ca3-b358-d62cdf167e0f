@@ -1,0 +1,46 @@
+{
+  "name": "@mono/common-tasks",
+  "version": "0.0.0",
+  "description": "Common ECS tasks.",
+  "keywords": [
+    "common",
+    "ECS",
+    "tasks"
+  ],
+  "author": "marekjulian-z <marek.ryniejski@foodsmart.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "types": "lib/index",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "script": "node ./lib/scripts/runner.js",
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@mono/common": "workspace:*",
+    "neverthrow": "catalog:",
+    "typescript": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/node": "catalog:",
+    "jest": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
