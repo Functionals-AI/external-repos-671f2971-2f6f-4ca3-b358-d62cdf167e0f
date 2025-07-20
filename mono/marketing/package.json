@@ -1,0 +1,65 @@
+{
+  "name": "@mono/marketing",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "private": true,
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "test": "jest --passWithNoTests"
+  },
+  "bugs": {
+    "url": "https://github.com/zipongo/mono/issues"
+  },
+  "dependencies": {
+    "@mono/common": "workspace:*",
+    "@mono/foodapp": "workspace:*",
+    "@mono/telenutrition": "workspace:*",
+    "adm-zip": "catalog:",
+    "axios": "catalog:",
+    "csv": "catalog:",
+    "csv-stringify": "catalog:",
+    "date-fns": "catalog:",
+    "form-data": "catalog:",
+    "lodash": "catalog:",
+    "luxon": "catalog:",
+    "mysql2": "catalog:",
+    "neverthrow": "catalog:",
+    "pg-cursor": "catalog:",
+    "phone": "catalog:",
+    "ssh2-sftp-client": "catalog:",
+    "typescript": "catalog:",
+    "uuid": "catalog:",
+    "zapatos": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/lodash": "catalog:",
+    "@types/luxon": "catalog:",
+    "@types/node": "catalog:",
+    "@types/ssh2-sftp-client": "catalog:",
+    "jest": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
