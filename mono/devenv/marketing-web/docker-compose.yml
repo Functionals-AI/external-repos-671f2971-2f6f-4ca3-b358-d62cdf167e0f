@@ -1,0 +1,46 @@
+services:
+  marketing-web:
+    build:
+      context: ../../
+      args:
+        BUILD_TYPE: dev
+        NODE_ENV:
+        NEXT_PUBLIC_VERSION:
+        NEXT_PUBLIC_GA_MEASUREMENT_ID:
+        PLASMIC_PROJECT_ID:
+        PLASMIC_TOKEN:
+      dockerfile: ./marketing-web/Dockerfile
+    networks:
+      telenutrition:
+    volumes:
+      - ../../marketing-web/src:/app/marketing-web/src
+      - ../../marketing-web/next.config.js:/app/marketing-web/next.config.js
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_GA_MEASUREMENT_ID=G-CEZDCYJV7B
+      - NEXT_PUBLIC_API_BASE_URL=http://foodsmart-devenv.com:3000/telenutrition/api/v1
+      - NEXT_PUBLIC_VERSION=d5bbab6b
+      - PLASMIC_PROJECT_ID=4wi7MZc3BZQHF9arbn2txJ
+    command: npm run dev
+    extra_hosts:
+      - "foodsmart-devenv2.com:17.100.0.3"
+
+  proxy:
+    image: nginx:latest
+    ports:
+      - 3000:3000
+    networks:
+      telenutrition:
+    volumes:
+      - ../marketing-web/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - marketing-web
+
+volumes:
+  db:
+networks:
+  telenutrition:
+    ipam:
+      driver: default
+      config:
+        - subnet: 18.100.0.0/16
