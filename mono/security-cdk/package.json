@@ -1,0 +1,60 @@
+{
+  "name": "@mono/security-cdk",
+  "version": "0.0.0",
+  "description": "Security Infrastructure for AWS",
+  "author": "Ryan Gooler <ryan.gooler@foodsmart.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "private": true,
+  "main": "lib/index",
+  "types": "lib/index",
+  "bin": {
+    "telenutrition": "bin/security.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "test": "jest --passWithNoTests",
+    "deploy:data-protection": "ts-node src/scripts/deploy-data-protection.ts"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:swc-core-caret-1-7-5",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/lodash": "catalog:",
+    "@types/node": "catalog:",
+    "aws-cdk": "catalog:",
+    "esbuild": "catalog:",
+    "jest": "catalog:",
+    "ts-node": "catalog:"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ecs": "catalog:",
+    "@mono/common": "workspace:*",
+    "@mono/common-cdk": "workspace:*",
+    "@mono/security": "workspace:*",
+    "@types/aws-lambda": "catalog:",
+    "aws-cdk-lib": "catalog:",
+    "aws-sdk": "catalog:",
+    "constructs": "catalog:",
+    "lodash": "catalog:",
+    "neverthrow": "catalog:",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
