@@ -1,0 +1,10 @@
+{
+  "detail": {
+    "bucket": {
+      "name": "foodsmart-development-external-data-us-west-2"
+    },
+    "object": {
+      "key": "outboundsftptest/outbound/blank.txt"
+    }
+  }
+}
