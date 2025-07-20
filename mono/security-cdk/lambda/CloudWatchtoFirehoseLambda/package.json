@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "build": "node buildlambda.js",
+    "postbuild": "node buildlambda.js"
+  },
+  "devDependencies": {
+    "esbuild": "catalog:"
+  },
+  "dependencies": {
+    "@aws-sdk/client-firehose": "catalog:",
+    "aws-sdk": "catalog:",
+    "zlib": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
