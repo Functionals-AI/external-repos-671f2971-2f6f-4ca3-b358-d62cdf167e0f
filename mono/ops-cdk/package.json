@@ -1,0 +1,58 @@
+{
+  "name": "@mono/ops-cdk",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "private": true,
+  "main": "lib/index",
+  "types": "lib/index",
+  "bin": {
+    "telenutrition": "bin/ops.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "test": "jest --passWithNoTests"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/lodash": "catalog:",
+    "@types/node": "catalog:",
+    "aws-cdk": "catalog:",
+    "jest": "catalog:",
+    "ts-node": "catalog:"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ecs": "catalog:",
+    "@mono/common": "workspace:*",
+    "@mono/common-cdk": "workspace:*",
+    "@mono/ops": "workspace:*",
+    "@mono/ops-flows": "workspace:*",
+    "aws-cdk-lib": "catalog:",
+    "axios": "^1.7.9",
+    "constructs": "catalog:",
+    "lodash": "catalog:",
+    "neverthrow": "catalog:",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
