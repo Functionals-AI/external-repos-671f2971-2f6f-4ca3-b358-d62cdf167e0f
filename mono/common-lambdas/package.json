@@ -1,0 +1,33 @@
+{
+  "name": "@mono/common-lambdas",
+  "version": "0.0.0",
+  "description": "Lambda support.",
+  "author": "marek <marek.ryniejski@foodsmart.com>",
+  "license": "ISC",
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@mono/common": "workspace:*",
+    "aws-cdk-lib": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "jest": "catalog:"
+  }
+}
