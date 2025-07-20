@@ -1,0 +1,22 @@
+{
+  "name": "@mono/eslint-config",
+  "version": "0.0.0",
+  "description": "Foodsmart ESLint Config",
+  "author": "avd-fs <alex.dagama@foodsmart.com>",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./base": "./base.js",
+    "./next": "./next.js",
+    "./node": "./node.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:",
+    "@eslint/eslintrc": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-next": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:"
+  }
+}
