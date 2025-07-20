@@ -1,0 +1,8 @@
+.wrapper {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
