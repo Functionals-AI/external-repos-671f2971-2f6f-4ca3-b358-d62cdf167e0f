@@ -1,0 +1,49 @@
+{
+  "name": "@mono/marketing-flows",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "flow-task": "node ./lib/runner.js",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@mono/common": "workspace:*",
+    "@mono/common-flows": "workspace:*",
+    "@mono/foodapp": "workspace:*",
+    "@mono/marketing": "workspace:*",
+    "@mono/telenutrition": "workspace:*",
+    "date-fns": "catalog:",
+    "neverthrow": "catalog:",
+    "phone": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/node": "catalog:",
+    "jest": "catalog:",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
