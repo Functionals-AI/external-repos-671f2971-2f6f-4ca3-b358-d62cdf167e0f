@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Starting e2e docker compose up"
+
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml up -d
+AWS_PROFILE=dev ./bin/telenutrition-app/seed-providers
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml -f ./telenutrition-e2e/docker-compose.yml up
