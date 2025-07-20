@@ -1,0 +1,21 @@
+#!/bin/bash
+echo -e "\nUpdating provider entry\n"
+
+if [ -z "$FIRST_NAME" ] || [ -z "$LAST_NAME" ] || [ -z "$OKTA_ID" ] || [ -z "$EMAIL" ] || [ -z "$PROVIDER_ID" ]; then
+    echo "Missing required environment variables"
+    exit 1
+fi
+
+echo "Setting provider $PROVIDER_ID to $FIRST_NAME $LAST_NAME - $EMAIL"
+
+POSTGRES_USER=$(docker compose -f ./common/docker-compose.yml exec -T store sh -c 'echo $POSTGRES_USER')
+POSTGRES_DB=$(docker compose -f ./common/docker-compose.yml exec -T store sh -c 'echo $POSTGRES_DB')
+
+docker compose -f ./common/docker-compose.yml exec store psql -U $POSTGRES_USER -d $POSTGRES_DB -c \
+    "UPDATE telenutrition.schedule_provider SET \
+    first_name='$FIRST_NAME', \
+    last_name='$LAST_NAME', \
+    okta_id='$OKTA_ID', \
+    email='$EMAIL', \
+    credentialing_committee_status='approved' \
+    WHERE provider_id=$PROVIDER_ID;"
