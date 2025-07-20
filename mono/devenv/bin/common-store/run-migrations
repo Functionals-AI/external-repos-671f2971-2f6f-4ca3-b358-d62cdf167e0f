@@ -1,0 +1,45 @@
+#!/bin/bash
+echo "Running migrations..."
+
+echo " - migrating common"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-common
+
+echo " - migrating foodcards"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-foodcards
+
+echo " - migrating telenutrition"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-telenutrition
+
+echo " - migrating callcenter"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-callcenter
+
+echo " - migrating marketing"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-marketing
+
+echo " - migrating program"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-program
+
+echo " - migrating dnc"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-dnc
+
+echo " - migrating eligibility"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-eligibility
+
+echo " - migrating deident"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-deident
+
+echo " - migrating deident_common"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-deident-common
+
+echo " - migrating deident-telenutrition"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up run-migrations-deident-telenutrition
+
+echo "Finished running migrations"
+
+echo "Running Zapatos schema generation..."
+
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml build generate-zapatos-schema
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up generate-zapatos-schema
+
+echo "Exiting..."
+exit 0
