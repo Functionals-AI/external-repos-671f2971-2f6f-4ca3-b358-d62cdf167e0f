@@ -1,0 +1,55 @@
+{
+  "name": "@mono/foodapp",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "private": true,
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "start": "node lib/index.ts",
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@aws-sdk/client-eventbridge": "catalog:",
+    "@aws-sdk/client-s3": "catalog:",
+    "@mono/common": "workspace:*",
+    "axios": "catalog:",
+    "csv": "catalog:",
+    "csv-stringify": "catalog:",
+    "date-fns": "catalog:",
+    "lodash": "catalog:",
+    "mysql2": "catalog:",
+    "neverthrow": "catalog:",
+    "pg-cursor": "catalog:",
+    "ssh2-sftp-client": "catalog:",
+    "typescript": "catalog:",
+    "uuid": "catalog:",
+    "zapatos": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/node": "catalog:",
+    "jest": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
