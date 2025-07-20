@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "./lib",
+    "rootDir": "src"
+  },
+  "include": [ "src/**/*" ],
+  "exclude": [
+    "src/scripts/*",
+    "src/task-runner.ts",
+  ],
+  "typeRoots": [
+  ],
+  "files": [],
+  "references": [
+    {"path": "../common"},
+    {"path": "../marketing"},
+    {"path": "../analytics"},
+    {"path": "../foodapp"}
+  ]
+}
