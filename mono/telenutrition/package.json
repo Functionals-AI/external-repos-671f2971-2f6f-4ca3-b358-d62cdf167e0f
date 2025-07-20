@@ -1,0 +1,82 @@
+{
+  "name": "@mono/telenutrition",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "lint": "eslint . --max-warnings=379",
+    "watch": "tsc -w --preserveWatchOutput",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@aws-sdk/client-eventbridge": "catalog:",
+    "@mono/analytics": "workspace:*",
+    "@mono/common": "workspace:*",
+    "@mono/foodapp": "workspace:*",
+    "@types/i18n": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/jsonwebtoken": "catalog:",
+    "@types/lodash": "catalog:",
+    "@types/luxon": "catalog:",
+    "@types/pg": "catalog:",
+    "@types/shuffle-seed": "catalog:",
+    "adm-zip": "catalog:",
+    "ajv": "catalog:",
+    "axios": "catalog:",
+    "axios-retry": "^4.5.0",
+    "candidhealth": "catalog:",
+    "csv": "catalog:",
+    "csv-parse": "catalog:",
+    "date-fns": "catalog:",
+    "decimal.js": "catalog:",
+    "fast-levenshtein": "catalog:",
+    "googleapis": "catalog:",
+    "i18n": "catalog:",
+    "jest": "catalog:",
+    "jsonwebtoken": "catalog:",
+    "lodash": "catalog:",
+    "luxon": "catalog:",
+    "mysql2": "catalog:",
+    "neverthrow": "catalog:",
+    "openpgp": "catalog:",
+    "pg": "catalog:",
+    "pg-cursor": "catalog:",
+    "phone": "catalog:",
+    "shuffle-seed": "catalog:",
+    "snowflake-sdk": "catalog:",
+    "ssh2-sftp-client": "catalog:",
+    "typescript": "catalog:",
+    "uuid": "catalog:",
+    "yargs": "catalog:",
+    "zapatos": "catalog:",
+    "zip-state": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@mono/eslint-config": "workspace:*",
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/snowflake-sdk": "catalog:",
+    "@types/yargs": "catalog:",
+    "eslint": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
