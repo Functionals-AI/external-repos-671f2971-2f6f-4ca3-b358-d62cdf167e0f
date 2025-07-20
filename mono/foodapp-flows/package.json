@@ -1,0 +1,51 @@
+{
+  "name": "@mono/foodapp-flows",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "mengchaoli <mengchao.li@foodsmart.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "flow-task": "node ./lib/runner.js",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "catalog:",
+    "@mono/common": "workspace:*",
+    "@mono/common-flows": "workspace:*",
+    "@mono/foodapp": "workspace:*",
+    "@slack/web-api": "catalog:",
+    "date-fns": "catalog:",
+    "lodash": "catalog:",
+    "mysql2": "catalog:",
+    "neverthrow": "catalog:",
+    "ssh2-sftp-client": "catalog:",
+    "typescript": "catalog:",
+    "url": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/node": "catalog:",
+    "jest": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
