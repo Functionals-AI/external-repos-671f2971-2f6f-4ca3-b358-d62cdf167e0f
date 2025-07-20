@@ -1,0 +1,29 @@
+services:
+  foodcards-dbmate-schema:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/foodcards:/db
+    depends_on:
+      store:
+        condition: service_healthy
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/schema", "up" ]
+  foodcards-dbmate-seeds:
+    image: amacneil/dbmate:2.19
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@store:5432/foodsmart?sslmode=disable
+    volumes:
+      - ../../common-store/migrations/foodcards:/db
+    depends_on:
+      foodcards-dbmate-schema:
+        condition: service_completed_successfully
+    networks:
+      common:
+    command: [ "--migrations-dir", "/db/seeds", "up" ]
+networks:
+  foodcards:
+volumes:
+  db:
