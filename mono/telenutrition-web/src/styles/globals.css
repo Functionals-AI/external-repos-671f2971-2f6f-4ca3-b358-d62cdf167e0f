@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+@import './calendar.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --font-atkinson: 'Atkinson Hyperlegible', sans-serif;
+
+    /* OLD COLORS? */
+    --f-very-dark-green: #0C694B;
+    --f-dark-green: #0C694B;
+    --f-light-green: #0A9B6F;
+    --f-very-light-green: #95D8C4;
+    --f-grey: #515151;
+    --f-light-grey: #E4E7E8;
+    --f-orange: #E8754F;
+    --f-yellow: rgb(253 224 80);
+    --f-red: #A2242B;
+    --f-light-red: #A2242B94;
+    --f-blue: #215B8C;
+    --black: rgb(0,0,0);
+
+    /* BEGIN NEW COLORS */
+    --status-green-100: #E4F6EA;
+    --status-green-200: #3FB966;
+    --status-green-400: #308C4D;
+    --status-green-700: #3A6042;
+
+    --status-amber-100: #FFF8E0;
+    --status-amber-150: #F5C000;
+    --status-amber-200: #C79C00;
+    --status-amber-700: #734E00;
+
+    --status-red-100: #FFF4F4;
+    --status-red-400: #F52A2A;
+    --status-red-600: #B51F1F;
+    --status-red-800: #961E1E;
+
+    --white: #FFFFFF;
+    --neutral-100: #F6F7F7;
+    --neutral-105: #F0F2F2;
+    --neutral-115: #E8EBEB;
+    --neutral-150: #D1D5D4;
+    --neutral-200: #AFB2B2;
+    --neutral-400: #7A7C7B;
+    --neutral-600: #636363;
+    --neutral-700: #515151;
+    --neutral-1500: #262626;
+
+    --fs-pale-green-100: #F3F8E8;
+    --fs-pale-green-115: #E5F2C7;
+    --fs-pale-green-130: #D7EBA9;
+
+    --fs-green-50: #EAF9F4;
+    --fs-green-100: #95D8C4;
+    --fs-green-200: #0EB884;
+    --fs-green-300: #0A9B6F;
+    --fs-green-600: #0C694B;
+
+    --blue-100: #E8F5FC;
+    --blue-150: #A7D3F1;
+    --blue-200: #5EAFED;
+    --blue-400: #1679CA;
+    --blue-600: #115C9C;
+    --blue-1000: #0C416E;
+
+    --teal-100: #E3FBFC;
+    --teal-125: #A3F5EF;
+    --teal-150: #55E2D9;
+    --teal-200: #33BAB1;
+    --teal-400: #0F877D;
+    --teal-700: #0A5E56;
+
+    --green-100: #EEF9BB;
+    --green-120: #E5F46A;
+    --green-140: #CFE638;
+    --green-200: #92C227;
+    --green-300: #4E9D12;
+    --green-600: #34671F;
+
+    --yellow-100: #F9F5C9;
+    --yellow-120: #FAEC8F;
+    --yellow-130: #FCE150;
+    --yellow-150: #F4CA00;
+    --yellow-200: #C09B16;
+    --yellow-500: #89650C;
+
+    --orange-100: #FCF2E8;
+    --orange-150: #FADBBD;
+    --orange-200: #F6B06A;
+    --orange-300: #E47811;
+    --orange-500: #9C5411;
+    --orange-900: #6E3B0C;
+
+    --rose-100: #FCE8F1;
+    --rose-150: #F9C3DA;
+    --rose-200: #F77EB2;
+    --rose-400: #E72378;
+    --rose-700: #AE1357;
+    --rose-1100: #6E0C37;
+
+    --purple-100: #FBF1FD;
+    --purple-150: #E7C4EE;
+    --purple-300: #C675F0;
+    --purple-600: #9118DC;
+    --purple-1000: #5F119C;
+    --purple-1400: #3D0C6E;
+
+    --border: #AFB2B2;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+
+    --shadow-hi: 0px 10px 24px -8px rgba(0, 0, 0, 0.10), 0px 37px 28px -9px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0px 8px 13px -4px rgba(0, 0, 0, 0.25);
+    --shadow-lo: 0px 4px 8px -4px rgba(0, 0, 0, 0.25);
+    --shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+
+  }
+}
+
+@layer components {
+  .focusable {
+    @apply outline-none focus:ring-2 focus:ring-fs-green-300 focus:ring-offset-2 focus-within:ring-2 focus-within:ring-fs-green-300 focus-within:ring-offset-2 transition-all rounded-sm disabled:pointer-events-none;
+    transition-duration: 75ms;
+  }
+
+  .focusable-error {
+    @apply outline-none focus:ring-2 focus:ring-status-red-600 focus:ring-offset-2 focus-within:ring-2 focus-within:ring-status-red-600 focus-within:ring-offset-2 transition-all rounded-sm disabled:pointer-events-none;
+    transition-duration: 75ms;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html, body {
+    font-family: var(--font-atkinson);
+  }
+
+  html {
+    padding-right: 0 !important;
+  }
+
+  a {
+    @apply text-f-blue underline;
+  }
+}
