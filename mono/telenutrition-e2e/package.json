@@ -1,0 +1,60 @@
+{
+  "name": "@mono/telenutrition-e2e",
+  "version": "0.0.0",
+  "description": "End to end testing of app functionality and data integrity.",
+  "author": "nikkovellios <nikko.vellios@foodsmart.com",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "private": true,
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "test": "jest --passWithNoTests",
+    "flow-task": "node ./lib/runner.js",
+    "playwright-install": "playwright install --with-deps chromium"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@mono/common": "workspace:*",
+    "@mono/common-flows": "workspace:*",
+    "@mono/telenutrition": "workspace:*",
+    "@mono/telenutrition-flows": "workspace:*",
+    "luxon": "catalog:",
+    "openpgp": "catalog:",
+    "@openpgp/web-stream-tools": "catalog:",
+    "pg": "catalog:",
+    "pg-cursor": "catalog:",
+    "phone": "catalog:",
+    "playwright": "catalog:",
+    "typescript": "catalog:",
+    "zapatos": "catalog:",
+    "@faker-js/faker": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/lodash": "catalog:",
+    "@types/luxon": "catalog:",
+    "@types/node": "catalog:",
+    "jest": "catalog:",
+    "ts-node": "catalog:",
+    "@playwright/test": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
