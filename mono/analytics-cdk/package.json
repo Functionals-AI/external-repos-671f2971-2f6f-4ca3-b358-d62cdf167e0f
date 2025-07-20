@@ -1,0 +1,50 @@
+{
+  "name": "@mono/analytics-cdk",
+  "version": "0.1.0",
+  "description": "Analytics CDK",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "test": "jest --passWithNoTests"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/node": "catalog:",
+    "aws-cdk": "catalog:",
+    "jest": "catalog:",
+    "ts-node": "catalog:"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-kinesisfirehose-alpha": "catalog:",
+    "@aws-cdk/aws-kinesisfirehose-destinations-alpha": "catalog:",
+    "@mono/analytics-flows": "workspace:*",
+    "@mono/common": "workspace:*",
+    "@mono/common-cdk": "workspace:*",
+    "aws-cdk-lib": "catalog:",
+    "constructs": "catalog:",
+    "neverthrow": "catalog:",
+    "typescript": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
