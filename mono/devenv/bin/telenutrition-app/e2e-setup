@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "Setting up e2e testing"
+
+echo "Installing xquartz"
+brew install --cask xquartz
+
+echo "Open XQuartz, go to Preferences -> Security, and check \"Allow connections from network clients.\"  This only needs to be performed once."
+
+xhost +localhost
