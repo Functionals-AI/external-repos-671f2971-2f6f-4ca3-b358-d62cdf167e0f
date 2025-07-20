@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Generating Zapatos Schema"
+
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml build generate-zapatos-schema
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml up generate-zapatos-schema
