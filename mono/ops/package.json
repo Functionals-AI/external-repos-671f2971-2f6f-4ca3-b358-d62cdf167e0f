@@ -1,0 +1,67 @@
+{
+  "name": "@mono/ops",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "joelzipongo <joel@zipongo.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "main": "lib/index",
+  "types": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "watch": "tsc -w",
+    "flow-task": "node ./lib/runner.js",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudformation": "catalog:",
+    "@aws-sdk/client-cloudwatch-logs": "catalog:",
+    "@aws-sdk/client-ecs": "catalog:",
+    "@aws-sdk/client-s3": "catalog:",
+    "@aws-sdk/client-secrets-manager": "catalog:",
+    "@aws-sdk/client-sns": "catalog:",
+    "@aws-sdk/lib-storage": "catalog:",
+    "@mono/common": "workspace:*",
+    "aws-sdk": "catalog:",
+    "axios": "catalog:",
+    "csv-parse": "catalog:",
+    "csv-stringify": "catalog:csv-stringify-caret-5-3-8",
+    "date-fns": "catalog:date-fns-caret-2-28-0",
+    "dayjs": "catalog:",
+    "luxon": "catalog:",
+    "neverthrow": "catalog:",
+    "openpgp": "catalog:",
+    "pg-query-stream": "catalog:",
+    "phone": "catalog:",
+    "ssh2-sftp-client": "catalog:",
+    "stream-transform": "catalog:",
+    "typescript": "catalog:",
+    "unzipper": "catalog:",
+    "uuid": "catalog:",
+    "xlsx-parse-stream": "catalog:",
+    "yargs": "catalog:",
+    "zapatos": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "@types/yargs": "catalog:",
+    "jest": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
