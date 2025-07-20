@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "Starting e2e testing debug mode"
+
+./bin/telenutrition-app/e2e-setup
+
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml up -d
+AWS_PROFILE=dev ./bin/telenutrition-app/seed-providers
+PWDEBUG=1 DEBUG=pw:api HEADED=1 AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml -f ./telenutrition-e2e/docker-compose.yml up
