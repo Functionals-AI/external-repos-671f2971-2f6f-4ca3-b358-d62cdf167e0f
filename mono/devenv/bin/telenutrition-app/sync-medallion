@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -e "\nSyncing Medallion Providers\n"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml exec telenutrition-api pnpm dlx ts-node ../telenutrition/src/medallion/scripts/sync-medallion-providers.ts
+
+echo -e "\nSyncing Medallion Licenses\n"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml exec telenutrition-api pnpm dlx ts-node ../telenutrition/src/medallion/scripts/sync-medallion-licenses.ts
+
+echo -e "\nSyncing Medallion Board Certificates\n"
+AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml exec telenutrition-api pnpm dlx ts-node ../telenutrition/src/medallion/scripts/sync-medallion-board-certificates.ts
