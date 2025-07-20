@@ -1,0 +1,22 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "tsc": {
+      "dependsOn": ["^tsc"],
+      "outputs": ["./lib/**", "./tsconfig.tsbuildinfo"]
+    },
+    "tsc:build": {
+      "dependsOn": ["^tsc:build"],
+      "outputs": ["./lib/**", "./tsconfig.tsbuildinfo"]
+    },
+    "test": {
+      "dependsOn": ["^tsc"]
+    },
+    "lint": {},
+    "i18n:extract": {
+      "cache": false
+    }
+  },
+  "globalDependencies": ["tsconfig.*", "eslint-config/"],
+  "globalEnv": ["NODE_ENV"]
+}
