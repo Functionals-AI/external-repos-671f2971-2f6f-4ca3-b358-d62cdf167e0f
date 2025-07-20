@@ -1,0 +1,46 @@
+name: pull-request
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      FORCE_COLOR: 1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      - name: Suppress "Unchanged files with check annotations" in github
+        run: |
+          echo "::remove-matcher owner=eslint-compact::"
+          echo "::remove-matcher owner=eslint-stylish::"
+      - name: Turborepo cache
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: turbo-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ github.ref_name }}-
+            turbo-
+      - name: Run install
+        run: pnpm install --frozen-lockfile
+      - name: Run tsc
+        run: NODE_OPTIONS="--max-old-space-size=4096" pnpm turbo run tsc --filter="...[origin/master]..." --concurrency="100%" --cache-dir=".turbo"
+      - name: Run lint
+        run: pnpm turbo run lint --filter="...[origin/master]..." --concurrency="100%" --cache-dir=".turbo"
+      - name: Run test
+        run: pnpm turbo run test --filter="...[origin/master]..." --concurrency="100%" --cache-dir=".turbo" --only
