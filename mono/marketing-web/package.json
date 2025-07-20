@@ -1,0 +1,32 @@
+{
+  "name": "@mono/marketing-web",
+  "version": "0.1.0",
+  "scripts": {
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "dev": "next dev",
+    "build": "next build --debug",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=94"
+  },
+  "dependencies": {
+    "@mono/common": "workspace:^",
+    "@plasmicapp/loader-nextjs": "catalog:",
+    "csvsync": "catalog:",
+    "googleapis": "catalog:",
+    "next": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "typescript": "catalog:"
+  },
+  "devDependencies": {
+    "@mono/eslint-config": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-next": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
