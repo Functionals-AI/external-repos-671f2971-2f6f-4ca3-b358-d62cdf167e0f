@@ -1,0 +1,46 @@
+{
+  "name": "mono",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "tsc": "turbo run tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "tsc:watch": "nodemon --watch './*/src/**' -e ts --exec 'turbo run tsc'",
+    "test": "FORCE_COLOR=1 turbo run test",
+    "test:watch": "FORCE_COLOR=1 turbo run test --parallel --no-cache --force -- --watch",
+    "lint": "FORCE_COLOR=1 turbo run lint",
+    "clean": "rm -rf ./node_modules ./*/node_modules ./*/lib ./*/tsconfig.tsbuildinfo ./.turbo ./*/.turbo ./playwright-report ./*/playwright-report ./*/.next",
+    "down": "docker stop $(docker ps -aq)",
+    "boot": "pnpm i;pnpm tsc;pnpm test",
+    "clean:dc": "docker stop $(docker ps -aq) ; docker rm -f $(docker ps -a -q)",
+    "clean:di": "docker image remove -f $(docker images -a -q)",
+    "clean:da": "docker stop $(docker ps -aq) ; && docker rm -f $(docker ps -a -q) ; docker image remove -f $(docker images -a -q)",
+    "clean:nuke": "rm -rf ./node_modules ./*/node_modules ./*/lib ./*/tsconfig.tsbuildinfo ./*/.turbo ./playwright-report ./*/playwright-report ; docker rm -f $(docker ps -a -q) ; docker image remove -f $(docker images -a -q) ; docker volume rm -f $(docker volume ls -q)",
+    "i18n:extract": "turbo run i18n:extract"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "nodemon": "catalog:",
+    "prettier": "catalog:"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "catalog:",
+    "constructs": "catalog:",
+    "neverthrow": "catalog:",
+    "turbo": "catalog:",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@10.4.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "cypress"
+    ]
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
