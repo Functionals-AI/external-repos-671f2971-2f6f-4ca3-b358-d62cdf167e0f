@@ -1,0 +1,75 @@
+version: 2
+updates:
+  # MINOR / PATCH - Daily security & version updates grouped into two separate PRs,
+  # one for each of the two groups (security-updates / version-updates).
+  # e.g. PR 1234:  axios v1.6.2 -> v1.7.4  +  typescript v5.3.3 -> v5.4.2  +  pg v8.12.0 -> v8.12.1
+  #
+  # MAJOR - Daily security & version updates grouped into two separate PRs,
+  # one for each of the two groups (security-updates / version-updates).
+  # e.g. PR 1237:  node v18.x.x -> v22.0.0  +  typescript v5.3.3 -> v6.0.1  +  pg v8.12.0 -> v9.2.2
+  #
+  # MAJOR - Daily security & version updates in individual respective PRs, for each dependency.
+  # e.g. PR 1234:  axios v0.26.0 -> v1.7.4
+  #      PR 1235:  typescript v5.3.3 -> v6.0.1
+  #      PR 1236:  pg v8.12.0 -> v9.2.2
+  #      PR 1237:  node v18.x.x -> v22.0.0
+  - package-ecosystem: "npm"
+    # Note: globs / wildcards are not supported by "directory," only "directories"
+    directories:
+      - "*"
+    # Run every day
+    schedule:
+      interval: "daily"
+    # Add labels to pull request
+    labels:
+    - "security"
+    - "dependencies"
+    # Add the following Github user groups as reviewers
+    reviewers:
+    - "zipongo/security"
+    - "zipongo/ops"
+    commit-message:
+      prefix: "pnpm:"
+      # List all updated dependencies in the commit message, after the prefix
+      include: "scope"
+    # Group minor & patch updates into single pull requests for security & version updates.
+    # Github will create default PRs for anything not covered, which in this case are major updates.
+    #
+    # Due to limitations in Dependabot, we are unable to segregate / combine these PRs in a more
+    # granular way.  Attempting to do so introduced the following configuration parse error:
+    #
+    # "Update configs must have a unique combination of 'package-ecosystem', 'directory', & 'target-branch'.
+    # Dependabot cannot determine if 'npm' has overlapping directories."
+    groups:
+      security-minor-and-patch:
+        applies-to: security-updates
+        patterns:
+        - "*"
+        update-types:
+        - "patch"
+        - "minor"
+      version-minor-and-patch:
+        applies-to: version-updates
+        patterns:
+        - "*"
+        update-types:
+        - "patch"
+        - "minor"
+    ignore:
+    # Exclude major updates & let Github create these major updates as individual PRs.  There is an
+    # advantage to this limitation in that some of these may pass tests / QA & be mergeable without
+    # additional dev work. The drawback is the potential of excessive PRs along with reaching the PR
+    # quantity limits.  Security update PRs are limited to 10, which is quite a bit more than we can
+    # keep up with daily, so this shouldn't be an issue.
+    - dependency-name: "*"
+      update-types: ["version-update:semver-major"]
+  # Check for updates to GitHub Actions every day
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+    - "dependencies"
+    reviewers:
+    - "zipongo/security"
+    - "zipongo/ops"
