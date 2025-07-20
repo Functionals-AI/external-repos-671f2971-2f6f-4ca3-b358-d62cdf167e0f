@@ -1,0 +1,29 @@
+services:
+  telenutrition-e2e:
+    build:
+      context: ../../
+      dockerfile: ./telenutrition-e2e/devenv.Dockerfile
+    volumes:
+      - ../../telenutrition-e2e/src:/app/telenutrition-e2e/src
+      - ~/.aws/:/app/.aws:ro
+    environment:
+      - NODE_ENV=devenv
+      - AWS_PROFILE=${AWS_PROFILE}
+      - APP_VERSION=0.1
+      - CI=true
+      - DISPLAY=host.docker.internal:0
+      - PWDEBUG=${PWDEBUG}
+      - DEBUG=${DEBUG}
+      - HEADED=${HEADED}
+      # DEBUG=pw:api
+      - LOCAL=1
+    networks:
+      common:
+      telenutrition:
+    ports:
+     - 3003:3003
+    command: pnpm dlx ts-node ./src/scripts/e2e-local.ts
+    depends_on:
+      - telenutrition-web
+    extra_hosts:
+      - "foodsmart-devenv.com:host-gateway"
