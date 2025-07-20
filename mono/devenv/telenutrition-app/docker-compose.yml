@@ -1,0 +1,66 @@
+services:
+  telenutrition-web:
+    build:
+      context: ../../
+      dockerfile: ./telenutrition-web/devenv.Dockerfile
+    networks:
+      telenutrition:
+    volumes:
+      - ../../telenutrition-web/src:/app/telenutrition-web/src
+      - ../../telenutrition-web/next.config.js:/app/telenutrition-web/next.config.js
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_BASE_URL=http://foodsmart-devenv.com:3000/telenutrition/api/v1
+      - NEXT_PUBLIC_INTERCOM_APP_ID=k16gpn9q
+    command: npm run dev
+    depends_on:
+      - telenutrition-api
+    extra_hosts:
+      - "foodsmart-devenv.com:17.100.0.3"
+
+  telenutrition-api:
+    build:
+      context: ../../
+      dockerfile: ./telenutrition-api/devenv.Dockerfile
+    networks:
+      common:
+      telenutrition:
+         ipv4_address: 17.100.0.3
+    ports:
+     - 3001:3001
+     - 9119:9119
+    volumes:
+      - ../../telenutrition-api/src:/app/telenutrition-api/src
+      - ../../telenutrition/src:/app/telenutrition/src
+      - ../../marketing/src:/app/marketing/src
+      - ../../common/src:/app/common/src
+      - ../../foodapp/src:/app/foodapp/src
+      - ~/.aws/:/home/app/.aws:ro
+      - ../../common/locales:/app/common/locales
+      - ~/.aws/:/home/node/.aws:ro
+    environment:
+      - NODE_ENV=devenv
+      - AWS_PROFILE=${AWS_PROFILE}
+      - APP_VERSION=0.1
+    command: npm run dev
+
+  proxy:
+    image: nginx:latest
+    ports:
+      - 3000:3000
+    networks:
+      telenutrition:
+    volumes:
+      - ../telenutrition-app/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - telenutrition-web
+      - telenutrition-api
+
+volumes:
+  db:
+networks:
+  telenutrition:
+    ipam:
+      driver: default
+      config:
+        - subnet: 17.100.0.0/16
