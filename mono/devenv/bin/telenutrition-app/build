@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+  echo "Starting docker compose up"
+  AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml build
+else
+  echo "Starting docker compose up $1"
+  AWS_PROFILE=dev docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml build $1
+fi
