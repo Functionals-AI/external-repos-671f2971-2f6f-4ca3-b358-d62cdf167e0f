@@ -1,0 +1,58 @@
+{"input":
+    { "detail":
+        { "bucket":
+            { "name": "zipongo-dev-eligibility-ready-us-west-2" },
+            "object": { "key": "brmc/FoodSmart_Eligibility_BRMC_20250307.csv"}
+        }
+    },
+    "dry_run": { 
+                 "flowTaskLogId": 423,
+                 "skipped": false,
+                 "taskArn": "arn:aws:ecs:us-west-2:914374131125:task/App/1a427201b3bb468f8fd2af4d0e3b978c",
+                 "command": [
+                    "node",
+                    "./scripts/eligibility/import-eligibility.es6",
+                    "--file",
+                    "s3://zipongo-dev-eligibility-ready-us-west-2/brmc/FoodSmart_Eligibility_BRMC_20250307.csv",
+                    "--addons",
+                    "/dev/null",
+                    "--spec",
+                    "brmc",
+                    "--organization_id",
+                    "212",
+                    "--file_date",
+                    "03/07/2025",
+                    "--outputs_path",
+                    "s3://zipongo-dev-tasks-us-west-2/eligibility/eligibility-import/brmc_20250307/",
+                    "--account_id","77" ],
+                "orgId": "212",
+                "spec":"brmc",
+                "s3Bucket":"zipongo-dev-eligibility-ready-us-west-2",
+                "s3Key":"brmc/FoodSmart_Eligibility_BRMC_20250307.csv",
+                "s3Uri":"s3://zipongo-dev-eligibility-ready-us-west-2/brmc/FoodSmart_Eligibility_BRMC_20250307.csv"
+                },
+            "flowTaskLogId":423,
+            "skipped":false,
+            "taskArn":"arn:aws:ecs:us-west-2:914374131125:task/App/1a427201b3bb468f8fd2af4d0e3b978c",
+            "command": [
+                    "node",
+                    "./scripts/eligibility/import-eligibility.es6",
+                    "--file","s3://zipongo-dev-eligibility-ready-us-west-2/brmc/FoodSmart_Eligibility_BRMC_20250307.csv",
+                    "--addons",
+                    "/dev/null",
+                    "--spec",
+                    "brmc",
+                    "--organization_id",
+                    "212",
+                    "--file_date",
+                    "03/07/2025",
+                    "--outputs_path",
+                    "s3://zipongo-dev-tasks-us-west-2/eligibility/eligibility-import/brmc_20250307/",
+                    "--account_id",
+                    "77" ],
+                "orgId":"212",
+                "spec":"brmc",
+                "s3Bucket":"zipongo-dev-eligibility-ready-us-west-2",
+                "s3Key":"brmc/FoodSmart_Eligibility_BRMC_20250307.csv",
+                "s3Uri":"s3://zipongo-dev-eligibility-ready-us-west-2/brmc/FoodSmart_Eligibility_BRMC_20250307.csv"
+            }
