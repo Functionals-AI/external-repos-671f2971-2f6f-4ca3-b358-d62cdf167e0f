@@ -1,0 +1,43 @@
+{
+  "name": "@mono/foodcards-tasks",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "mengchaoli <mengchao.li@foodsmart.com>",
+  "homepage": "https://github.com/zipongo/mono#readme",
+  "license": "ISC",
+  "main": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipongo/mono.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:build": "tsc --project tsconfig.build.json",
+    "scripts": "node ./lib/scripts/runner.js",
+    "test": "jest --passWithNoTests"
+  },
+  "bugs": {
+    "url": "https://github.com/zipongo/mono/issues"
+  },
+  "dependencies": {
+    "@mono/common": "workspace:*",
+    "@mono/foodcards": "workspace:*",
+    "neverthrow": "catalog:",
+    "typescript": "catalog:"
+  },
+  "devDependencies": {
+    "@swc/core": "catalog:",
+    "@swc/jest": "catalog:",
+    "@types/jest": "catalog:",
+    "jest": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.13.1"
+  }
+}
