@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Migrating telenutrition..."
+docker compose -f ./common/docker-compose.yml -f ./telenutrition-app/docker-compose.yml up telenutrition-dbmate-schema
